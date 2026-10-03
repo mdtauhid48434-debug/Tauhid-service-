@@ -1,0 +1,542 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="THMS - Tauhid Home Massage Service in Rajarhat and New Town.">
+<title>THMS | Tauhid Home Massage Service</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #07111f;
+  --panel: #10243a;
+  --cyan: #73e5dc;
+  --blue: #428fc3;
+  --white: #f5faff;
+  --muted: #b8c8d9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 12px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(5, 14, 27, .88);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid #73e5dc25;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--cyan);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.brand img {
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 22px #73e5dc35;
+}
+
+nav {
+  display: flex;
+  gap: 22px;
+}
+
+nav a {
+  color: white;
+  font-size: 13px;
+  transition: .3s;
+}
+
+nav a:hover { color: var(--cyan); }
+
+.hero {
+  min-height: 100vh;
+  padding: 125px 20px 70px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 35%, #17476c 0%, transparent 55%),
+    linear-gradient(140deg, #07111f, #102a46, #07111f);
+}
+
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 380px;
+  height: 380px;
+  border: 1px solid #73e5dc30;
+  border-radius: 50%;
+  animation: orbit 22s linear infinite;
+}
+
+.hero::after {
+  width: 600px;
+  height: 600px;
+  animation-direction: reverse;
+  border-color: #428fc322;
+}
+
+.hero-content {
+  max-width: 850px;
+  animation: enter 1.3s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.hero-logo {
+  display: block;
+  width: 210px;
+  max-width: 65vw;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 22px;
+  margin: 0 auto 30px;
+  box-shadow: 0 18px 60px #0009, 0 0 35px #73e5dc35;
+  animation: float 4s ease-in-out 1.2s infinite;
+}
+
+.eyebrow {
+  color: var(--cyan);
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 7vw, 76px);
+  line-height: 1.13;
+  font-weight: 800;
+  margin-bottom: 22px;
+}
+
+.hero h1 span {
+  background: linear-gradient(90deg, #73e5dc, #67a7e5);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  max-width: 650px;
+  margin: auto;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 30px;
+  border-radius: 50px;
+  color: #061522;
+  background: linear-gradient(100deg, #73e5dc, #6aa6de);
+  font-weight: 700;
+  box-shadow: 0 10px 35px #73e5dc35;
+  transition: .35s;
+}
+
+.btn:hover {
+  transform: translateY(-5px) scale(1.04);
+  box-shadow: 0 15px 45px #73e5dc75;
+}
+
+section {
+  padding: 85px 7%;
+  text-align: center;
+}
+
+.kicker {
+  color: var(--cyan);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: clamp(28px, 4vw, 42px);
+  margin: 10px 0 40px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  max-width: 1150px;
+  margin: auto;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  padding: 35px 24px;
+  border-radius: 22px;
+  border: 1px solid #73e5dc25;
+  background: linear-gradient(145deg, #142b45, #0c1b2e);
+  transition: transform .4s, box-shadow .4s, border-color .4s;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #ffffff10, transparent);
+  transform: skewX(-20deg);
+  transition: .7s;
+}
+
+.card:hover::before { left: 150%; }
+
+.card:hover {
+  transform: translateY(-12px);
+  border-color: #73e5dc99;
+  box-shadow: 0 20px 50px #0006;
+}
+
+.icon {
+  font-size: 38px;
+  color: var(--cyan);
+  margin-bottom: 18px;
+}
+
+.card h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.card p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+.pricing {
+  background: linear-gradient(180deg, #0c1d32, #081321);
+}
+
+.price {
+  font-size: 34px;
+  color: var(--cyan);
+  font-weight: 800;
+  margin: 18px 0;
+}
+
+.featured {
+  background: linear-gradient(145deg, #174968, #10253e);
+  border-color: #73e5dc65;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 20px;
+  max-width: 1050px;
+  margin: auto;
+}
+
+.gallery-item {
+  min-height: 200px;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 25% 25%, #347f9b, transparent 65%),
+    linear-gradient(140deg, #173451, #0d1b30);
+  border: 1px solid #73e5dc40;
+  font-weight: 600;
+  transition: .4s;
+}
+
+.gallery-item:hover {
+  transform: scale(1.04);
+  box-shadow: 0 15px 40px #0005;
+}
+
+.about {
+  background: #0c1b2c;
+}
+
+.about p {
+  max-width: 800px;
+  margin: auto;
+  color: var(--muted);
+  line-height: 2;
+}
+
+.contact-card {
+  max-width: 750px;
+  margin: auto;
+  padding: 40px 25px;
+  background: linear-gradient(145deg, #142b45, #0c1b2e);
+  border: 1px solid #73e5dc40;
+  border-radius: 25px;
+}
+
+.contact-card p {
+  color: var(--muted);
+  margin: 12px 0;
+}
+
+footer {
+  padding: 25px;
+  text-align: center;
+  background: #050c16;
+  border-top: 1px solid #73e5dc20;
+  color: #9aafc4;
+  font-size: 13px;
+}
+
+/* SCROLL ANIMATION */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(55px);
+  filter: blur(5px);
+  transition: opacity .8s ease, transform .8s ease, filter .8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* KEYFRAMES */
+
+@keyframes enter {
+  0% {
+    opacity: 0;
+    transform: translateY(55px) scale(.94);
+    filter: blur(12px);
+  }
+  70% { opacity: 1; filter: blur(0); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes orbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* MOBILE */
+
+@media(max-width:700px) {
+  header {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 4%;
+  }
+
+  .brand img {
+    width: 43px;
+    height: 43px;
+  }
+
+  nav {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 13px;
+  }
+
+  nav a { font-size: 12px; }
+
+  .hero { padding-top: 150px; }
+  .hero-logo { width: 165px; }
+  section { padding: 65px 5%; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="#home" class="brand">
+    <img src="logo.jpg" alt="THMS Logo">
+    <span>THMS</span>
+  </a>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+<div class="hero" id="home">
+  <div class="hero-content">
+    <img src="logo.jpg" alt="Tauhid Home Massage Service Logo" class="hero-logo">
+    <div class="eyebrow">Tauhid Home Massage Service</div>
+    <h1>Welcome to <span>THMS</span></h1>
+    <p>
+      Comfort, care and convenience at your doorstep.
+      Explore our home-service options around Rajarhat and New Town.
+    </p>
+    <a href="#services" class="btn">Explore Services</a>
+  </div>
+</div>
+
+<section id="services" class="reveal">
+  <div class="kicker">What we offer</div>
+  <h2>Our Services</h2>
+
+  <div class="cards">
+    <div class="card">
+      <div class="icon">✦</div>
+      <h3>Home Massage</h3>
+      <p>Relaxation and comfort at your preferred location, subject to availability.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">◇</div>
+      <h3>Personal Care</h3>
+      <p>Professional service with privacy, respect and clear communication.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">⌂</div>
+      <h3>Home Service</h3>
+      <p>Convenient booking around Rajarhat and New Town. Contact us for details.</p>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="pricing reveal">
+  <div class="kicker">Our packages</div>
+  <h2>Our Pricing</h2>
+
+  <div class="cards">
+    <div class="card">
+      <h3>1–2 Hours</h3>
+      <div class="price">₹2,699</div>
+      <p>Ask us about the available duration and service details.</p>
+    </div>
+
+    <div class="card featured">
+      <h3>Full Service</h3>
+      <div class="price">₹5,000</div>
+      <p>Confirm the exact package and details when booking.</p>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="reveal">
+  <div class="kicker">Our experience</div>
+  <h2>Gallery</h2>
+
+  <div class="gallery">
+    <div class="gallery-item">Premium Care</div>
+    <div class="gallery-item">Comfort</div>
+    <div class="gallery-item">Relaxation</div>
+  </div>
+</section>
+
+<section id="about" class="about reveal">
+  <div class="kicker">Who we are</div>
+  <h2>About THMS</h2>
+  <p>
+    THMS offers convenient home services in the Rajarhat and New Town area.
+    Our goal is to provide a comfortable, respectful and professional booking
+    experience. Contact us for current availability and complete service information.
+  </p>
+</section>
+
+<section id="contact" class="reveal">
+  <div class="kicker">Get in touch</div>
+  <h2>Contact & Booking</h2>
+
+  <div class="contact-card">
+    <p><strong>Location:</strong> Narayanpur, Bartala Bazar Road</p>
+    <p><strong>Service Area:</strong> Rajarhat, New Town</p>
+    <p><strong>Phone:</strong> 8864044241</p>
+
+    <a class="btn"
+       href="https://wa.me/918864044241?text=Hello%20THMS%2C%20I%20want%20to%20know%20about%20your%20services."
+       target="_blank"
+       rel="noopener noreferrer">
+       Book on WhatsApp
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  © 2026 THMS. All rights reserved.
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach((element) => {
+  observer.observe(element);
+});
+</script>
+
+</body>
+</html>
